@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "d4e1b120-5732-4cfe-996d-9939b2fbfba6",
+		"name": "Logicaldoc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ajouter dossier",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9983bdd0-74e2-4571-8fc0-506c21c7a6e7",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 105,\n    \"parentId\": 4,\n    \"name\": \"Folder created by REST ws\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.102.81:8080/logicaldoc/services/rest/folder/create",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"102",
+						"81"
+					],
+					"port": "8080",
+					"path": [
+						"logicaldoc",
+						"services",
+						"rest",
+						"folder",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lister dossiers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5e08f5a6-1ad5-4b28-ae4b-0e369bdab7aa",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.102.81:8080/logicaldoc/services/rest/folder/getFolder?folderId=104",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"102",
+						"81"
+					],
+					"port": "8080",
+					"path": [
+						"logicaldoc",
+						"services",
+						"rest",
+						"folder",
+						"getFolder"
+					],
+					"query": [
+						{
+							"key": "folderId",
+							"value": "104"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
